@@ -8,15 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class mainJV extends AppCompatActivity
 {
     EditText nbr;
-    Button reinitialiser, quitter, afficher;
+    Button reinitialiser, quitter, afficher , white, pink, purple;
     String txt, error;
     TextView multiplication;
     int nombre;
+    View main_ac;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -28,10 +31,18 @@ public class mainJV extends AppCompatActivity
         setTitle("TABLE DE MULTIPLICATION");
 
         nbr = findViewById(R.id.etNbr);
+
         reinitialiser = findViewById(R.id.btnRntlsr);
         quitter = findViewById(R.id.btnQtr);
         multiplication = findViewById(R.id.tvMltplct);
         afficher = findViewById(R.id.btnAfchr);
+        multiplication = findViewById(R.id.tvMltplct);
+
+        white = findViewById(R.id.white);
+        pink = findViewById(R.id.pink);
+        purple = findViewById(R.id.purple);
+
+        main_ac = findViewById(R.id.main_ac);
 
         reinitialiser.setOnClickListener(new View.OnClickListener()
         {
@@ -73,6 +84,33 @@ public class mainJV extends AppCompatActivity
             public void onClick(View v)
             {
                 System.exit(0);
+            }
+        });
+
+        white.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                main_ac.setBackgroundColor(getResources().getColor(R.color.white));
+            }
+        });
+
+        pink.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                main_ac.setBackgroundColor(getResources().getColor(R.color.pink));
+            }
+        });
+
+        purple.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                main_ac.setBackgroundColor(getResources().getColor(R.color.purple_200));
             }
         });
 
