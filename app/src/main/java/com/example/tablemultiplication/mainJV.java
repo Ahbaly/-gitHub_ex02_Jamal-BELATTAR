@@ -13,9 +13,10 @@ import android.widget.Toast;
 public class mainJV extends AppCompatActivity
 {
     EditText nbr;
-    Button reinitialiser, quitter;
+    Button reinitialiser, quitter, afficher;
     String txt, error;
     TextView multiplication;
+    int nombre;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -30,6 +31,7 @@ public class mainJV extends AppCompatActivity
         reinitialiser = findViewById(R.id.btnRntlsr);
         quitter = findViewById(R.id.btnQtr);
         multiplication = findViewById(R.id.tvMltplct);
+        afficher = findViewById(R.id.btnAfchr);
 
         reinitialiser.setOnClickListener(new View.OnClickListener()
         {
@@ -46,13 +48,12 @@ public class mainJV extends AppCompatActivity
                     if (txt.charAt(0) == '?')
                     {
                         error += " and TABLE DE MULTIPLICATION madarch";
+                        Toast.makeText(mainJV.this, error, Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
                         multiplication.setText(R.string.multpleTv);
                     }
-
-                    Toast.makeText(mainJV.this, error, Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
@@ -72,6 +73,32 @@ public class mainJV extends AppCompatActivity
             public void onClick(View v)
             {
                 System.exit(0);
+            }
+        });
+
+        afficher.setOnClickListener(new View.OnClickListener()
+        {
+            @SuppressLint("DefaultLocale")
+            @Override
+            public void onClick(View v)
+            {
+                nombre = Integer.parseInt(String.format("%s", nbr.getText()));
+
+                txt = String.format("%d * 0 = 0\n%d * 1 = %d\n%d * 2 = %d\n%d * 3 = %d\n%d * 4 = %d\n%d * 5 = %d\n%d * 6 = %d\n%d * 7 = %d\n%d * 8 = %d\n%d * 9 = %d\n%d * 10 = %d",
+                        nombre,
+                        nombre, nombre,
+                        nombre, nombre * 2,
+                        nombre, nombre * 3,
+                        nombre, nombre * 4,
+                        nombre, nombre * 5,
+                        nombre, nombre * 6,
+                        nombre, nombre * 7,
+                        nombre, nombre * 8,
+                        nombre, nombre * 9,
+                        nombre, nombre * 10
+                        );
+
+                multiplication.setText(txt);
             }
         });
     }
